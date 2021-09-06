@@ -1,0 +1,11 @@
+name: "Hello Conditional World"
+description: "Say Hello if the param has matching condition"
+inputs:
+  message:
+    default: ""
+runs:
+  using: "composite"
+  steps:
+    - run: echo "Hello World!! message=${{ inputs.message }}"
+      if: ${{ inputs.message != '' }}
+      shell: bash
