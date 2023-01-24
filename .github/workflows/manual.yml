@@ -1,14 +1,28 @@
 name: "Manual Action"
-on: [workflow_dispatch]
+on:
+  workflow_dispatch:
+    inputs:
+      cond:
+        description: "condition"
+        required: true
+        type: string
 jobs:
+  validation:
+    name: Validation
+    if: github.event.inputs.env_name == 'run'
+    runs-on: ubuntu-22.04
+    steps:
+      - name: echo
+        run: |
+          echo "validated! go to next job"
   hello:
     name: Hello
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
+    needs: [validation]
     steps:
       - name: checkout
         uses: actions/checkout@v2
 
       - name: Hello
-        uses: ./.github/actions/hello
-        with:
-          message: "This is a conditional message!!"
+        run: |
+          echo "Hello, GitHub Actions!!"
