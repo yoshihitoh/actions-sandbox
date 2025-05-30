@@ -19,4 +19,4 @@ jobs:
         run: which sccache
 
       - name: Build
-        run: cargo build --release
+        run: RUSTC_WRAPPER=/usr/local/bin/sccache cargo build --release
