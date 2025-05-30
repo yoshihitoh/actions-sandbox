@@ -5,9 +5,7 @@ on:
 jobs:
   hello:
     name: Hello
-    runs-on:
-      - codebuild-github-actions-runner-${{ github.run_id }}-${{ github.run_attempt }}
-      - buildspec-override:true
+    runs-on: [self-hosted, Linux, ARM64]
     steps:
       - name: checkout
         uses: actions/checkout@v4
