@@ -32,7 +32,7 @@ jobs:
             core.exportVariable('ACTIONS_RUNTIME_TOKEN', process.env.ACTIONS_RUNTIME_TOKEN || '');
 
       - name: Install Rust toolchain
-        uses: dtolnay/rust-toolchain@1.86.0
+        uses: dtolnay/rust-toolchain@stable
 
       - name: Build
         run: RUSTC_WRAPPER=/usr/local/bin/sccache cargo build --release
