@@ -9,6 +9,11 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v4
+        with:
+          repository: yoshihitoh/ut-cli
 
-      - name: hello
-        run: echo "Hello self-hosted runner!"
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@1.86.0
+
+      - name: Build
+        run: cargo build --release
